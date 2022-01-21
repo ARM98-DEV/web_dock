@@ -1,0 +1,49 @@
+version: '3.3'
+
+services:
+  app:
+    build: app
+    container_name: django-gunicorn
+    volumes:
+      - static_volume:/src/mysite/static
+
+    restart: always
+    env_file:
+      - .django.env
+    ports:
+      - "8000:8000"
+    command:
+      "gunicorn --workers=2 --bind=0.0.0.0:8000 mysite.wsgi:application"
+    depends_on:
+      - db
+  nginx:
+    image: nginx:1.17
+    container_name: ngx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /home/admin/public_html/web_docker/app/mysite/static:/src/mysite/static
+      - ./nginx:/etc/nginx/conf.d
+      - ./certbot/www:/var/www/certbot/:ro
+    depends_on:
+      - app 
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes: 
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    command: certonly --webroot -w /var/www/certbot --force-renewal --email sohrab.azarisamani@gmail.com -d clinikyekta.com --agree-tos
+
+  db:
+    image: postgres:13.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=
+      - POSTGRES_PASSWORD=
+      - POSTGRES_DB=
+volumes:
+  postgres_data:
+  static_volume:

@@ -1,0 +1,64 @@
+@font-face {
+	font-family: 'ElegantIcons';
+	src:url('fonts/ElegantIcons.eot');
+	src:url('fonts/ElegantIconsd41d.eot?#iefix') format('embedded-opentype'),
+		url('fonts/ElegantIcons.woff') format('woff'),
+		url('fonts/ElegantIcons.ttf') format('truetype'),
+		url('fonts/ElegantIcons.svg#ElegantIcons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+
+/* Use the following CSS code if you want to have a class per icon */
+/*
+Instead of a list of all class selectors,
+you can use the generic selector below, but it's slower:
+[class*="your-class-prefix"] {
+*/
+.errorlist li{
+	color: red !important;
+}
+ .icon_search, .icon_chat_alt, .icon_clock_alt, .icon_genius, .icon_book_alt, .icon_heart_alt, .icon_mail, .icon_pin, .icon_phone, .icon_id {
+	font-family: 'ElegantIcons';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+.icon_search:before {
+	content: "\55";
+}
+.icon_chat_alt:before {
+	content: "\77";
+}
+.icon_clock_alt:before {
+	content: "\7d";
+}
+.icon_genius:before {
+	content: "\e00a";
+}
+.icon_book_alt:before {
+	content: "\e022";
+}
+.icon_heart_alt:before {
+	content: "\e030";
+}
+.icon_mail:before {
+	content: "\e076";
+}
+.icon_pin:before {
+	content: "\e081";
+}
+.icon_phone:before {
+	content: "\e090";
+}
+.icon_id:before {
+	content: "\e107";
+}
+
+	
